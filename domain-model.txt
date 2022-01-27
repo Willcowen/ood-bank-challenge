@@ -1,0 +1,40 @@
+Bank Challenge!
+
+Class BankAccount {
+    constructor () {
+        this.balance = 0
+        this.accountOpen = false
+    }
+
+    withdraw (num) {
+        return this.balance - num
+    }
+
+    deposit (num) {
+        return this.balance + num
+    }
+
+    openAccount() {
+        this.accountOpen = true
+    }
+}
+
+Class Client {
+    //track balance
+    //make Deposits
+    //withdraw
+    constructor () {
+        this.account = new BankAccount()
+    }
+
+    getBalance() {
+
+    }
+}
+
+Class Printer {
+    // prints the currentBalance along with all deposits and withdrawals made.
+
+
+    
+}
