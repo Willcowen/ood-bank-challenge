@@ -4,6 +4,7 @@ class Client {
 
     constructor () {
         this.account = new bank()
+        this.transactions = []
     }
 
     openAccount(date) {
@@ -12,19 +13,35 @@ class Client {
     }
 
     makeDeposit(num, date) {
-        this.account.credit += num
-        this.account.balance += num
-        this.account.date = date
+        const transaction = {
+           credit: this.account.credit += num,
+           balance: this.account.balance += num,
+           date: this.account.date = date,
+           debit: this.account.debit
+        }
+        this.transactions.push(transaction)
+        console.log(transaction)
     }
     makeWithdrawal(num, date) {
-        this.account.debit = this.account.debit += num
-        this.account.balance -= num
-        this.account.date = date
+
+        const transaction = {
+        credit: this.account.credit,
+        balance: this.account.balance -= num,
+        date: this.account.date = date,
+        debit: this.account.debit += num
+        }
+        this.transactions.push(transaction)
+        console.log(transaction)
     }
 
     showAccount() {
         return this.account
     }
+
+    showTransactions() {
+        return this.transactions
+    }
+
 
 }
 
