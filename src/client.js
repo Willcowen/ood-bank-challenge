@@ -1,38 +1,30 @@
-const bank = require('./bank.js')
+const Transaction = require('./Transactions.js')
 
 class Client {
 
-    constructor () {
-        this.account = new bank()
+    constructor (balance = 0) {
         this.transactions = []
+        this.balance = balance
     }
 
-    openAccount(date) {
-        this.account.date = date
-        return this.account
-    }
 
     makeDeposit(num, date) {
-        const transaction = {
-           credit: this.account.credit += num,
-           balance: this.account.balance += num,
-           date: this.account.date = date,
-           debit: this.account.debit
+        if (num < 0) {
+            return 'Cannot deposit a negative amount!'
         }
-        this.transactions.push(transaction)
-        console.log(transaction)
+        this.transactions.push(new Transaction(date, num, this.balance))
+        this.balance += num
     }
-    makeWithdrawal(num, date) {
 
-        const transaction = {
-        credit: this.account.credit,
-        balance: this.account.balance -= num,
-        date: this.account.date = date,
-        debit: this.account.debit += num
+
+    makeWithdrawal(num, date) {
+        if (num < 0) {
+            return 'Cannot withdraw a negative amount!'
         }
-        this.transactions.push(transaction)
-        console.log(transaction)
-    }
+        this.transactions.push(new Transaction(date, 0, this.balance, num))
+        this.balance -= num
+        }
+    
 
     showAccount() {
         return this.account

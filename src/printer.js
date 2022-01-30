@@ -2,13 +2,21 @@ const client = require('./client.js')
 
 class Printer {
     
-    constructor (transactionsArray) {
-        this.statement = transactions
+    constructor () {
+        this.transactions = []
     }
 
-
+    addTransaction(){
+       const transactionsArray = client.showTransactions()
+        for (let i = 0; i < transactionsArray.length; i++){
+            this.transactions.push(transacationsArray[i])
+        }
+        return this.transactions
+    }
     printStatement() {
-        console.table(this.statement)
+        for (let i = 0; i < this.statement.length; i++) {
+        console.log(this.statement[i])
+        }
         return this.statement
     }
 }
