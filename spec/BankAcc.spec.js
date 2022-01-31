@@ -6,9 +6,14 @@ const dateString = new Date('2012, 01, 10').toLocaleDateString()
 const dateStringTwo = new Date('2012, 01, 13').toLocaleDateString()
 const dateStringThree = new Date('2012, 01, 14').toLocaleDateString()
 
+const transactions = [
+  new Transaction(dateStringThree, 0, 500, 3000),
+  new Transaction(dateStringTwo, 2000, 0, 1000),
+  new Transaction(dateString, 1000, 0, 0)
+  ]
+
 describe("Bank", () => {
   let client
-  let printer = new Printer();
 
   beforeEach(() => {
     client = new Client();
@@ -49,13 +54,14 @@ describe("Bank", () => {
     //verify
     expect(result).toEqual(expected);
   });
+  //TEST SIX
   it("Showing a statement", () => {
     //setup 
-    client.makeDeposit(4000, dateString)
-    client.makeDeposit(3000, dateStringTwo)
-    result = client.showStatement()
+    let printer = new Printer(transactions)
+    result = printer.printStatement()
     //execute 
-    const expected = ""
+    const expected = 
+    []
     //verify
     expect(result).toEqual(expected);
   });
