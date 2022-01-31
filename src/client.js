@@ -1,10 +1,10 @@
-const Transaction = require('./Transactions.js')
+const Transaction = require('./Transaction.js')
 
 class Client {
 
-    constructor (balance = 0) {
+    constructor () {
         this.transactions = []
-        this.balance = balance
+        this.balance = 0
     }
 
 
@@ -12,22 +12,28 @@ class Client {
         if (num < 0) {
             return 'Cannot deposit a negative amount!'
         }
-        this.transactions.push(new Transaction(date, num, this.balance))
+        this.transactions.push(new Transaction(date, num, 0, this.balance))
         this.balance += num
     }
-
 
     makeWithdrawal(num, date) {
         if (num < 0) {
             return 'Cannot withdraw a negative amount!'
         }
-        this.transactions.push(new Transaction(date, 0, this.balance, num))
+        this.transactions.push(new Transaction(date, 0, num, this.balance))
         this.balance -= num
         }
     
+    getBalances(){
+        this.transactions.sort((a, b) => a.date - b.date)
+        // for (let i = 0; i < this.transactions.length; i++) {
+        //     for 
+        // }
+        
+    }
 
-    showAccount() {
-        return this.account
+    showStatement() {
+        console.table(this.transactions)
     }
 
     showTransactions() {

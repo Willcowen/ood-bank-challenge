@@ -1,8 +1,8 @@
 class Transactions {
-    constructor (date, credit = 0, balance = 0, debit = 0) {
-        this.balance = balance + this.credit - this.debit
+    constructor (date, credit, debit, balance) {
         this.credit = credit
         this.debit = debit
+        this.balance = balance + this.credit - this.debit
         this.date = date
     }
 
