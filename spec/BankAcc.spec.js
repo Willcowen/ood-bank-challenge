@@ -55,13 +55,18 @@ describe("Bank", () => {
     expect(result).toEqual(expected);
   });
   //TEST SIX
-  it("Showing a statement", () => {
+
+  //TEST SEVEN
+  it("Printer: Printing a statement", () => {
     //setup 
     let printer = new Printer(transactions)
     result = printer.printStatement()
     //execute 
     const expected = 
-    []
+    '\nDate       || Credit || Debit || Balance'
+    + '\n14/01/2012 || 0   || 500     || 2500'
+    + '\n13/01/2012 || 2000   || 0     || 3000'
+    + '\n10/01/2012 || 1000   || 0     || 1000'
     //verify
     expect(result).toEqual(expected);
   });

@@ -1,9 +1,9 @@
 Bank Challenge!
 
-Class BankAccount {
+Class Client {
     constructor () {
-        this.balance = 0
-        this.accountOpen = false
+        this.transactions = []
+        
     }
 
     withdraw (num) {
@@ -19,12 +19,13 @@ Class BankAccount {
     }
 }
 
-Class Client {
-    //track balance
-    //make Deposits
-    //withdraw
-    constructor () {
-        this.account = new BankAccount()
+Class Transaction {
+    
+    constructor (date, credit, debit, balance) {
+        this.credit = credit
+        this.debit = debit
+        this.balance = balance + this.credit - this.debit
+        this.date = date
     }
 
     getBalance() {
@@ -33,7 +34,10 @@ Class Client {
 }
 
 Class Printer {
-    // prints the currentBalance along with all deposits and withdrawals made.
+ constructor (transactions) {
+        this.transactions = transactions
+    }
+
 
 
     

@@ -23,23 +23,19 @@ class Client {
         this.transactions.push(new Transaction(date, 0, num, this.balance))
         this.balance -= num
         }
-    
-    getBalances(){
-        this.transactions.sort((a, b) => a.date - b.date)
-        // for (let i = 0; i < this.transactions.length; i++) {
-        //     for 
-        // }
-        
-    }
 
-    showStatement() {
-        console.table(this.transactions)
+
+    showTransactions() {
+        const lines = []
+        for (const transaction of this.transactions) {
+            lines.push(transaction)
+        }
+      return lines.join('\n')
     }
 
     showTransactions() {
         return this.transactions
     }
-
 
 }
 

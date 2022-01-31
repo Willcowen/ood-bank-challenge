@@ -6,9 +6,6 @@ class Printer {
         this.transactions = transactions
     }
 
-    //add on headers
-    //return a string
-    //add balance?
     printStatement() {
         const lines = []
         lines.push(`\nDate       || Credit || Debit || Balance`)
