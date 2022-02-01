@@ -55,7 +55,16 @@ describe("Bank", () => {
     expect(result).toEqual(expected);
   });
   //TEST SIX
-
+  it("Printer: Printing an empty statement", () => {
+    //setup 
+    let printer = new Printer([])
+    result = printer.printStatement()
+    //execute 
+    const expected = 
+    '\nDate       || Credit || Debit || Balance'
+    //verify
+    expect(result).toEqual(expected);
+  });
   //TEST SEVEN
   it("Printer: Printing a statement", () => {
     //setup 
